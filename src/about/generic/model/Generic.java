@@ -6,6 +6,7 @@ import java.util.List;
 import about.generic.example.ExampleOne;
 import about.generic.example.ExampleTwo;
 
+/** "Don't use raw types in new code" **/
 
 public class Generic {
     public static void main(String[] args) {
@@ -43,14 +44,11 @@ public class Generic {
 
     // Wildcards.
     public static void exampleOne(List<?> list) {
-
     }
 
     public static void exampleTwo(List<? extends User> list) {
-
     }
 
     public static void exampleThree(List<? super User> list) {
-
     }
 }

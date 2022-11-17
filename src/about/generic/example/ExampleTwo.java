@@ -6,6 +6,7 @@ public class ExampleTwo<T> {
     private ExampleTwo() {
     }
 
+    // generic method.
     public static <T> ExampleTwo<T> init(T instantiator) {
         return new ExampleTwo<T>();
     }

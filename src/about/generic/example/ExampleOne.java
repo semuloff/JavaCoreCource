@@ -1,5 +1,6 @@
 package about.generic.example;
 
+// class with generic.
 public class ExampleOne<T> {
     private T instance;
 
