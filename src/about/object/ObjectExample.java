@@ -1,7 +1,7 @@
-package AboutObject;
+package about.object;
 
 
-public class AboutObject extends Object{
+public class ObjectExample extends Object{
     @Override
     public String toString() {
         return " --- Override! --- ";

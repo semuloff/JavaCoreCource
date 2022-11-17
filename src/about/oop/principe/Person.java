@@ -1,4 +1,4 @@
-package ObjectsStaticMethodsFields;
+package about.oop.principe;
 
 public class Person {
     public static int count = 0;

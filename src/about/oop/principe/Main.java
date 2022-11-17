@@ -1,4 +1,4 @@
-package ObjectsStaticMethodsFields;
+package about.oop.principe;
 
 public class Main {
     public static void main(String[] args) {

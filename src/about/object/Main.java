@@ -1,13 +1,13 @@
-package AboutObject;
+package about.object;
 
 
 public class Main {
     public static void main(String[] args) {
-        AboutObject objOne = new AboutObject();
+        ObjectExample objOne = new ObjectExample();
         System.out.println("Class: " + objOne.getClass().getName() + "\n" + "Hash code: " + objOne.hashCode());
         System.out.println("toString: " + objOne.toString() + "\n");
 
-        AboutObject objTwo = new AboutObject();
+        ObjectExample objTwo = new ObjectExample();
         System.out.println("Class: " + objTwo.getClass().getName() + "\n" + "Hash code: " + objTwo.hashCode());
         System.out.println("toString: " + objTwo.toString());
 
