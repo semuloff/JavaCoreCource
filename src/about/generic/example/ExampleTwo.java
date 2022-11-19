@@ -11,11 +11,16 @@ public class ExampleTwo<T> {
         return new ExampleTwo<T>();
     }
 
-    public void set(T obj) {
-        instance = obj;
+    public void set(T object) {
+        instance = object;
     }
 
     public T get() {
         return instance;
+    }
+
+    @Override
+    public String toString() {
+        return "This is ExampleTwo :)";
     }
 }
