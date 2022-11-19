@@ -66,6 +66,9 @@ public class Generic {
         exampleThree(list4);
         exampleThree(list5);
 //        exampleThree(list6);
+
+        /** Generic method example. **/
+        System.out.println("Result: " + Generic.<Integer>genericMethodExample(21));
     }
 
     public static int getSumExOne(List items) {
@@ -90,6 +93,11 @@ public class Generic {
         }
 
         return sum;
+    }
+
+    // Generic method.
+    public static <T> T genericMethodExample(Object object) {
+        return (T) object;
     }
 
     // Wildcards.
