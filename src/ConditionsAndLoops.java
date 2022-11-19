@@ -17,11 +17,17 @@ public class ConditionsAndLoops {
             quess = Integer.parseInt(reader.readLine());
 
             if (quess == hidNumber) {
-                System.out.print("\nFine! You quessed!");
+                System.out.println("\nFine! You quessed!\n");
                 break;
             }
 
-            System.out.print("\nMiss:) ");
+            System.out.println("\nMiss:) ");
         }
+
+        /**
+         * ternary operator.
+         * condition ? result 1 : result 2
+         **/
+        System.out.println(quess == hidNumber ? "You are win!" : "It's so bad :(");
     }
 }
