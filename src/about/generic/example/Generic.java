@@ -77,19 +77,19 @@ public class Generic {
         for (Object item : items) {
             if (item instanceof Integer) {
                 System.out.println("This is integer: " + item);
-                sum += (int) item;
+                sum += (int) item; // explicit casting.
             }
         }
 
         return sum;
     }
 
-    public static int getSumExTwo(List items) {
+    public static int getSumExTwo(List<Integer> items) {
         int sum = 0;
 
-        for (Object item : items) {
+        for (Integer item : items) {
             System.out.println("This is integer: " + item);
-            sum += (int) item;
+            sum += item; // implicit casting.
         }
 
         return sum;
