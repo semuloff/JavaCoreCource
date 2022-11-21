@@ -1,16 +1,20 @@
-package about.collection.list;
+package about.collection.list.arraylist;
+
+import about.collection.list.arraylist.own.ArrayListOwn;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArrayListExample {
     public static void main(String[] args) {
-        List<Integer> arrayList = new ArrayList<>();
-
         /**
          * The default size of an ArrayList is 10.
          * The DEFAULT_CAPACITY field is responsible for this, which is equal to 10
          * (everything is in the sources of the ArrayList class).
+         */
+        List<Integer> arrayList = new ArrayList<>();
+
+        /**
          * An array can be initialized with a different size,
          * passing your size as the initialCapacity argument in the constructor:
          */
@@ -44,7 +48,6 @@ public class ArrayListExample {
          * An IndexOutOfBoundsException will be thrown.
          */
         arrayList.set(0, 11);
-
         System.out.println("List: " + arrayList);
 
         /**
@@ -80,12 +83,39 @@ public class ArrayListExample {
          * As a result, the method returns the element that was removed.
          */
         System.out.println("Remove: " + arrayList.remove(0));
-
         System.out.println("List: " + arrayList);
 
         /** Remove all elements from the list. **/
         arrayList.clear();
+        System.out.println("List: " + arrayList + "\n");
 
-        System.out.println("List: " + arrayList);
+
+        /** Own ArrayList example. **/
+        ArrayListOwn<String> arrayListOwn = new ArrayListOwn<>();
+
+        System.out.println("Own array: " + arrayListOwn);
+        System.out.println("IsEmpty: " + arrayListOwn.isEmpty());
+        System.out.println("Size: " + arrayListOwn.size());
+
+        for (int iteration = 0; iteration < 10; iteration++) {
+            arrayListOwn.add("line " + iteration);
+        }
+        System.out.println("Own array: " + arrayListOwn);
+        arrayListOwn.add("overflow");
+        System.out.println("Own array: " + arrayListOwn);
+
+        System.out.print("Changed element: ('" + arrayListOwn.set("Override", 0) + "')... ");
+        System.out.println("Own array: " + arrayListOwn);
+
+        System.out.println("IsEmpty: " + arrayListOwn.isEmpty());
+        System.out.println("Size: " + arrayListOwn.size());
+        System.out.println("Get (index = 3) : " + arrayListOwn.get(3));
+
+        System.out.print("Remove ('" + arrayListOwn.remove(5) + "')... ");
+        System.out.println("Own array: " + arrayListOwn);
+
+        System.out.print("Clear... ");
+        arrayListOwn.clear();
+        System.out.println("Own array: " + arrayListOwn);
     }
 }
