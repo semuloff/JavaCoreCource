@@ -27,7 +27,8 @@ public class ArrayListOwn<T> {
     /** Checking for an existing index. **/
     private int isIndexExist(int index) {
         if (index >= this.size || index < 0) {
-            throw new IndexOutOfBoundsException("Element can't be found! Number of elements in array = " + size + ". Total size of array = " + elements.length);
+            throw new IndexOutOfBoundsException("Element can't be found! Number of elements in array = "
+                    + size + ". Total size of array = " + elements.length);
         }
 
         return index;
