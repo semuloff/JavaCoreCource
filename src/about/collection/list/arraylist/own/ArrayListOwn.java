@@ -45,7 +45,7 @@ public class ArrayListOwn<T> {
         return elements = newArray;
     }
 
-    /** Adding an element to the end of the list. At the end, the "true" returns.**/
+    /** Adding an element to the end of the list. At the end, the "true" returns. **/
     public boolean add(T element) {
         if (size == elements.length) {
             grow();
@@ -100,7 +100,7 @@ public class ArrayListOwn<T> {
         return (size == 0);
     }
 
-    /** Removes all of the elements from this list. The list will be empty after this call returns. */
+    /** Removes all of the elements from this list. The list will be empty after this call returns. **/
     public void clear() {
         for (int index = 0, border = size; index < border; index++) {
             elements[index] = null;
