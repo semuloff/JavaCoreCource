@@ -1,4 +1,4 @@
-package about.collection.list.arraylist;
+package about.collection.list.arraylist.example;
 
 import about.collection.list.arraylist.own.ArrayListOwn;
 
