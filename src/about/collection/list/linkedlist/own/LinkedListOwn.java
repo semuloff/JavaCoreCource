@@ -16,14 +16,14 @@ public class LinkedListOwn<E> {
             this.next = next;
         }
 
-//        @Override
-//        public String toString() {
-//            String previous = (this.previous == null) ? "No link" : (String) this.previous.item;
-//            String next = (this.next == null) ? "No link" : (String) this.next.item;
-//
-//            return "Node: {" + "Previous: " + previous + ", Item: " + item +
-//                    ", Next: " +  next + "}";
-//        }
+        @Override
+        public String toString() {
+            String previous = (this.previous == null) ? "No link" : this.previous.item.toString();
+            String next = (this.next == null) ? "No link" : this.next.item.toString();
+
+            return "{" + "Previous item: " + previous + ", Current item: " + item +
+                    ", Next item: " +  next + "}";
+        }
     }
 
     // The method adds an element to the end of the list.
@@ -42,6 +42,42 @@ public class LinkedListOwn<E> {
             addFirst(item);
         else
             linkBefore(item, findNode(index));
+    }
+
+    // Method for adding an element to the beginning of the list.
+    public void addFirst(E item) {
+        linkFirst(item);
+    }
+
+    // Method for adding an element to the end of the list.
+    public void addLast(E item) {
+        linkLast(item);
+    }
+
+    // The method creates a new node at the beginning of the list and changes links.
+    private void linkFirst(E item) {
+        final Node<E> firstNode = first;
+        final Node<E> newNode = new Node<>(null, item, firstNode);
+        first = newNode;
+
+        if (firstNode == null)
+            last = newNode;
+        else
+            firstNode.previous = newNode;
+
+        size++;
+    }
+
+    // Method allows you to get the value of an element by index.
+    public E get(int index) {
+        checkElementIndex(index);
+
+        return findNode(index).item;
+    }
+
+    // The method returns the contents of the node at the specified index.
+    public Node<E> getNode(int index) {
+        return findNode(index);
     }
 
     // The method clears all values of each node. Clearing the list.
@@ -65,29 +101,6 @@ public class LinkedListOwn<E> {
         return size;
     }
 
-    // Internal method for adding an element to the beginning of the list.
-    private void addFirst(E item) {
-        linkFirst(item);
-    }
-
-    // Internal method for adding an element to the end of the list.
-    private void addLast(E item) {
-        linkLast(item);
-    }
-
-    // The method creates a new node at the beginning of the list and changes links.
-    private void linkFirst(E item) {
-        final Node<E> firstNode = first;
-        final Node<E> newNode = new Node<>(null, item, firstNode);
-
-        if (firstNode == null)
-            last = newNode;
-        else
-            firstNode.previous = newNode;
-
-        size++;
-    }
-
     // The method creates a new node at the end of the list and changes links.
     private void linkLast(E item) {
         final Node<E> lastNode = last;
@@ -99,7 +112,6 @@ public class LinkedListOwn<E> {
         else
             lastNode.next = newNode;
 
-        System.out.println(newNode);
         size++;
     }
 
@@ -164,7 +176,7 @@ public class LinkedListOwn<E> {
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
     }
 
-    // Overridden method for pretty list output.
+    // Overridden method for pretty list output. Only supported for the String data type.
     @Override
     public String toString() {
         if (first == null) {
@@ -174,7 +186,7 @@ public class LinkedListOwn<E> {
             Node<E> currentNode = first;
 
             for (int iteration = 0, border = size; iteration < border; iteration++) {
-                listToPrint += currentNode.item;
+                listToPrint += currentNode.item.toString();
                 if (iteration + 1 < border) {
                     listToPrint += ", ";
                 }
