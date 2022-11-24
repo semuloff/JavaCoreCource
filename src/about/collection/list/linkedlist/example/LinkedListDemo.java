@@ -53,5 +53,19 @@ public class LinkedListDemo {
         }
 
         System.out.println("Node content: " + linkedListOwn.getNode(5));
+
+        System.out.println("Removed item: " + linkedListOwn.removeFirst());
+        System.out.println(linkedListOwn);
+        System.out.println("Removed item: " + linkedListOwn.removeLast());
+        System.out.println(linkedListOwn);
+        System.out.println("Size: " + linkedListOwn.size());
+        System.out.println("Removed item: " + linkedListOwn.remove(5));
+        System.out.println(linkedListOwn);
+
+        System.out.println("Set: oldItem - " + linkedListOwn.set(2022, 5));
+        System.out.println(linkedListOwn);
+
+        linkedListOwn.clear();
+        System.out.println(linkedListOwn);
     }
 }

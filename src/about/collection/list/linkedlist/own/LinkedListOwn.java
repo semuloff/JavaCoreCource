@@ -1,5 +1,7 @@
 package about.collection.list.linkedlist.own;
 
+import java.util.NoSuchElementException;
+
 public class LinkedListOwn<E> {
     private Node<E> first;
     private Node<E> last;
@@ -54,18 +56,36 @@ public class LinkedListOwn<E> {
         linkLast(item);
     }
 
-    // The method creates a new node at the beginning of the list and changes links.
-    private void linkFirst(E item) {
-        final Node<E> firstNode = first;
-        final Node<E> newNode = new Node<>(null, item, firstNode);
-        first = newNode;
+    // The method removes the list element selected by index and returns the removed element.
+    public E remove(int index) {
+        checkElementIndex(index);
 
-        if (firstNode == null)
-            last = newNode;
+        if (index == 0)
+            return removeFirst();
+        else if (index == (size - 1))
+            return removeLast();
         else
-            firstNode.previous = newNode;
+            return unlink(findNode(index));
+    }
 
-        size++;
+    // The method removes the first element of the list and returns the removed element.
+    public E removeFirst() {
+        final Node<E> first = this.first;
+
+        if (first == null)
+            throw new NoSuchElementException();
+
+        return unlinkFirst(first);
+    }
+
+    // The method removes the last element of the list and returns the removed element.
+    public E removeLast() {
+        final Node<E> last = this.last;
+
+        if (last == null)
+            throw new NoSuchElementException();
+
+        return unlinkLast(last);
     }
 
     // Method allows you to get the value of an element by index.
@@ -78,6 +98,17 @@ public class LinkedListOwn<E> {
     // The method returns the contents of the node at the specified index.
     public Node<E> getNode(int index) {
         return findNode(index);
+    }
+
+    // The method sets the value of the selected node.
+    public E set(E newItem, int index) {
+        checkElementIndex(index);
+
+        Node<E> selectedNode = findNode(index);
+        final E oldItem = selectedNode.item;
+        selectedNode.item = newItem;
+
+        return oldItem;
     }
 
     // The method clears all values of each node. Clearing the list.
@@ -99,6 +130,20 @@ public class LinkedListOwn<E> {
     // The method returns the number of related elements.
     public int size() {
         return size;
+    }
+
+    // The method creates a new node at the beginning of the list and changes links.
+    private void linkFirst(E item) {
+        final Node<E> firstNode = first;
+        final Node<E> newNode = new Node<>(null, item, firstNode);
+        first = newNode;
+
+        if (firstNode == null)
+            last = newNode;
+        else
+            firstNode.previous = newNode;
+
+        size++;
     }
 
     // The method creates a new node at the end of the list and changes links.
@@ -128,6 +173,74 @@ public class LinkedListOwn<E> {
             previousNode.next = newNode;
 
         size++;
+    }
+
+    // The method removes the first node.
+    private E unlinkFirst(Node<E> first) {
+        // assert first != null.
+        final E item = first.item;
+        final Node<E> nextNode = first.next;
+
+        first.item = null;
+        first.next = null;
+
+        this.first = nextNode;
+
+        if (nextNode == null)
+            last = null;
+        else
+            nextNode.previous = null;
+
+        size--;
+
+        return item;
+    }
+
+    // The method removes the last node.
+    private E unlinkLast(Node<E> last) {
+        // assert last != null.
+        final E item = last.item;
+        final Node<E> previousNode = last.previous;
+
+        last.item = null;
+        last.previous = null;
+        this.last = previousNode;
+
+        if (previousNode == null)
+            this.first = null;
+        else
+            previousNode.next = null;
+
+        size--;
+
+        return item;
+    }
+
+    // The method deletes the selected node.
+    private E unlink(Node<E> selectedNode) {
+        // assert selectedNode != null.
+        final E item = selectedNode.item;
+        final Node<E> previousNode = selectedNode.previous;
+        final Node<E> nextNode = selectedNode.next;
+
+        if (previousNode == null)
+            first = nextNode;
+        else {
+            previousNode.next = nextNode;
+            selectedNode.previous = null;
+        }
+
+        if (nextNode == null)
+            last = previousNode;
+        else {
+            nextNode.previous = previousNode;
+            selectedNode.next = null;
+        }
+
+        selectedNode.item = null;
+        size--;
+
+        return item;
     }
 
     // The method searches for a node at the specified index.
