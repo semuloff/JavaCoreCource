@@ -59,7 +59,7 @@ public class ArrayListOwn<T> {
     /** Sets the element to the specified position. Returns the replaced element. **/
     public T set(T element, int index) {
         isIndexExist(index);
-        T oldValue = (T) elements[index];
+        final T oldValue = (T) elements[index];
         elements[index] = element;
 
         return oldValue;
